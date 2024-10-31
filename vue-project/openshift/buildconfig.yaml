@@ -1,0 +1,19 @@
+
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: vuetify-app
+spec:
+  source:
+    git:
+      uri: [YOUR_GIT_REPOSITORY_URL]  # Replace with your git repo URL
+      ref: main
+    type: Git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile.openshift  # We'll create this next
+  output:
+    to:
+      kind: ImageStreamTag
+      name: vuetify-app:latest
